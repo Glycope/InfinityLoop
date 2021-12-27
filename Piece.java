@@ -32,7 +32,10 @@ public class Piece {
 		this.type = type;
 		this.orientation = type.getOrientation(orientation);
 		this.connectors = type.setConnectorsList(orientation);
-		this.isFixed = false;
+		if (type == PieceType.FOURCONN)
+			this.isFixed = true;
+		else
+			this.isFixed = false;
 		this.possibleOrientations = type.getListOfPossibleOri();
 	}
 
@@ -42,7 +45,10 @@ public class Piece {
 		this.type = PieceType.getTypefromValue(typeValue);
 		this.orientation = type.getOrientation(Orientation.getOrifromValue(orientationValue));
 		this.connectors = type.setConnectorsList(Orientation.getOrifromValue(orientationValue));
-		this.isFixed = false;
+		if (type == PieceType.FOURCONN)
+			this.isFixed = true;
+		else
+			this.isFixed = false;
 		this.possibleOrientations = type.getListOfPossibleOri();
 	}
 
