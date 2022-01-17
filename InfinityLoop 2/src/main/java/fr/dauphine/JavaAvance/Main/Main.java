@@ -65,7 +65,9 @@ public class Main {
             	maxcc = Integer.parseInt(cmd.getOptionValue("x"));
             Grid inputGrid = new Grid(width,height, maxcc);
             Generator.generateLevel(outputFile,inputGrid);
-            GUI.startGUI(outputFile);
+            if (inputGrid.getHeight() <= 50 && inputGrid.getWidth() <= 50)
+            	GUI.startGUI(outputFile);
+            else System.out.println("Seules les grilles de taille 50x50 maximum peuvent être affichées sur l'interface graphique.");
             // generate grid and store it to outputFile...
             //...            
         }
@@ -76,7 +78,6 @@ public class Main {
             outputFile = cmd.getOptionValue( "o" );
             boolean solved = false; 
             solved = Solver.solveGridFile(inputFile, outputFile);
-            GUI.startGUI(outputFile);
             
         
             // load grid from inputFile, solve it and store result to outputFile...
